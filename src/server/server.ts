@@ -18,6 +18,9 @@ class App {
 		app.use(bodyParser.json())
 		app.use(bodyParser.urlencoded({extended: true}))
 
+		app.use(express.static(path.join(__dirname, '../client')))
+		app.use('/jquery', express.static(path.join(__dirname, '../../node_modules/jquery/dist/')))
+
 		app.use('/api/todos', todoRoutes)
 
 		this.server = new http.Server(app)
